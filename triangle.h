@@ -8,4 +8,8 @@ enum triangleType { Equilateral, Isosceles, Scalene, NotTriangle, INVALID};
 
 triangleType judge_triangle(unsigned int e1, unsigned int e2,unsigned int e3);
 
-
+typedef struct _InvalidVars {
+	bool aInval;
+	bool bInval;
+	bool cInval;
+	} InvalidVars;
