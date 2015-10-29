@@ -4,10 +4,10 @@
 // Test cases :
 // Normal Tests
 //   including bondary values, single/multiple invalid
-//   e.g. 2015/12/31;2015/2/27 ...etc
+//   e.g. 2011/12/31;2011/2/27 ...etc
 // Robust Tests
 //   including rejecting values, single/multiple invalid
-//   e.g. 2015/12/32;2015/2/29 ...etc
+//   e.g. 2011/12/32;2011/2/29 ...etc
 //   (Regaring 0/0/0 as invalid date)
 
 int main(int argc, char* argv[]) {

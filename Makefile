@@ -1,5 +1,5 @@
 all:
-	g++ -lgtest -o test ./test.cpp next_date.cpp
+	g++ -lgtest -std=c++11 -o test ./test.cpp next_date.cpp
 	./test
 
 .PHONY: clean
