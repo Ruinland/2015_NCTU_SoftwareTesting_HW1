@@ -13,3 +13,4 @@ class Date {
 
 Date next_date(unsigned int y, unsigned int m, unsigned int d);
 
+const Date DATE_INVALID = {0, 0, 0};
