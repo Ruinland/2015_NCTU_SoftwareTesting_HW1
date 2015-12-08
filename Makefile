@@ -12,10 +12,11 @@ coverage: run
 	cat ./next_date.cpp.gcov | c++filt > ./next_date.cpp.gcov.filt
 
 ## b : branch, r : relative only, a : show basic block, c : show count
+	#DEAD CODE BELOW
+	#llvm-link ./klee_next_date.bc ./next_date.bc -o ./klee_test.bc
 
 klee-test: test.cpp next_date.cpp
 	clang++ -std=c++11 -D__KLEE__ -I/home/klee/klee_src/include -emit-llvm -c -g next_date.cpp
-	#llvm-link ./klee_next_date.bc ./next_date.bc -o ./klee_test.bc
 
 unittest: CXXFLAGS += -D__UNIT_TEST__
 unittest: test.out
