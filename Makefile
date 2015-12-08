@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++14 -g -Wall -fprofile-arcs -ftest-coverage
+CXXFLAGS = -std=c++11 -g -Wall -fprofile-arcs -ftest-coverage 
 LDFLAGS = -lgtest
 
 all: unittest
@@ -13,12 +13,15 @@ coverage: run
 
 ## b : branch, r : relative only, a : show basic block, c : show count
 
+klee-test: test.cpp next_date.cpp
+	clang++ -std=c++11 -D__KLEE__ -I/home/klee/klee_src/include -emit-llvm -c -g next_date.cpp
+	#llvm-link ./klee_next_date.bc ./next_date.bc -o ./klee_test.bc
 
 unittest: CXXFLAGS += -D__UNIT_TEST__
 unittest: test.out
 
 test.out: test.cpp next_date.cpp
-	$(CXX) -o test.out $(CXXFLAGS) $(LDFLAGS) ./test.cpp ./next_date.cpp
+	$(CXX) -o test.out $(CXXFLAGS) ./test.cpp ./next_date.cpp $(LDFLAGS) 
 
 clean:
 	rm -f *.out
@@ -26,5 +29,7 @@ clean:
 	rm -f *.gcov
 	rm -f *.gcda
 	rm -f *.filt
+	rm -f *.bc
+	rm -rf klee-*
 
 .PHONY: clean all
